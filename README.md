@@ -1,6 +1,6 @@
 # Retrieval Labs Landing Page
 
-High-authority, premium technical infrastructure design for [Retrieval Labs](https://github.com/RetrievalLabs).
+Retrieval Labs is infrastructure for secure knowledge access in enterprise AI. It helps agents, search, and RAG systems retrieve only what each user is already allowed to see.
 
 ## Quick Start
 
