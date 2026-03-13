@@ -1,0 +1,188 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* High-authority palette */
+    --color-background: #04070a;
+    --color-surface: #0a0f18;
+    --color-accents-1: #161c2b;
+    --color-accents-2: #2d3748;
+
+    --color-brand: #38bdf8;
+    --color-brand-muted: #1e40af;
+
+    /* Spacing Rhythm (8px base) */
+    --space-1: 0.25rem;
+    /* 4px */
+    --space-2: 0.5rem;
+    /* 8px */
+    --space-3: 0.75rem;
+    /* 12px */
+    --space-4: 1rem;
+    /* 16px */
+    --space-6: 1.5rem;
+    /* 24px */
+    --space-8: 2rem;
+    /* 32px */
+    --space-12: 3rem;
+    /* 48px */
+    --space-16: 4rem;
+    /* 64px */
+    --space-24: 6rem;
+    /* 96px */
+    --space-32: 8rem;
+    /* 128px */
+
+    --font-heading: 'Instrument Serif', serif;
+    --font-body: 'Instrument Sans', sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    scroll-snap-type: y proximity;
+    /* Changed from mandatory to proximity for smoother pinning transitions */
+    background: var(--color-background);
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  body {
+    @apply text-slate-300 antialiased;
+    font-family: var(--font-body);
+    touch-action: manipulation;
+    overflow-x: hidden;
+    background-color: #04070a;
+    background-image:
+      linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+      radial-gradient(at 0% 0%, rgba(56, 189, 248, 0.05) 0px, transparent 50%),
+      radial-gradient(at 100% 0%, rgba(30, 64, 175, 0.05) 0px, transparent 50%),
+      radial-gradient(at 50% 50%, rgba(4, 7, 10, 1) 0px, transparent 100%);
+    background-size: 80px 80px, 80px 80px, 100% 100%, 100% 100%, 100% 100%;
+    background-attachment: fixed;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-heading);
+    @apply text-white tracking-tight leading-[1.05];
+    text-wrap: balance;
+  }
+
+  section {
+    position: relative;
+    scroll-snap-align: start;
+    /* Changed from start to center for better focus */
+    scroll-snap-stop: normal;
+  }
+
+  /* Custom selection */
+  ::selection {
+    background: rgba(56, 189, 248, 0.2);
+    color: #fff;
+  }
+}
+
+@layer components {
+
+  /* Premium Containers */
+  .v-stack {
+    @apply flex flex-col;
+  }
+
+  .h-stack {
+    @apply flex flex-row items-center;
+  }
+
+  .section-container {
+    @apply max-w-7xl mx-auto px-6 sm:px-12;
+  }
+
+  /* Infrastructure-grade Button */
+  .btn-infra {
+    @apply relative inline-flex items-center justify-center px-6 py-3 sm:px-8 sm:py-4 rounded-full bg-white text-navy-950 font-sans font-semibold text-sm sm:text-base transition-all duration-300 overflow-hidden focus:outline-none focus:ring-2 focus:ring-sky-400 focus:ring-offset-2 focus:ring-offset-background;
+  }
+
+  .btn-infra::before {
+    content: '';
+    @apply absolute inset-0 bg-sky-400 opacity-0 transition-opacity duration-300;
+  }
+
+  .btn-infra:hover::before {
+    @apply opacity-10;
+  }
+
+  .btn-infra-ghost {
+    @apply inline-flex items-center justify-center px-6 py-3 sm:px-8 sm:py-4 rounded-full border border-white/10 text-white font-sans font-medium text-sm sm:text-base hover:bg-white/5 transition-all duration-300;
+  }
+
+  /* Card Monolith */
+  .card-monolith {
+    @apply relative border border-white/5 bg-surface/50 backdrop-blur-xl rounded-2xl p-8 sm:p-12 overflow-hidden;
+  }
+
+  /* Noise Overlay */
+  .noise-overlay {
+    position: fixed;
+    inset: -200%;
+    z-index: 1000;
+    pointer-events: none;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    opacity: 0.015;
+    animation: noise 0.2s infinite;
+  }
+}
+
+@keyframes noise {
+  0% {
+    transform: translate(0, 0)
+  }
+
+  10% {
+    transform: translate(-1%, -1%)
+  }
+
+  20% {
+    transform: translate(1%, 1%)
+  }
+
+  30% {
+    transform: translate(-2%, 1%)
+  }
+
+  40% {
+    transform: translate(2%, -1%)
+  }
+
+  50% {
+    transform: translate(-1%, 2%)
+  }
+
+  60% {
+    transform: translate(1%, -2%)
+  }
+
+  70% {
+    transform: translate(2%, 2%)
+  }
+
+  80% {
+    transform: translate(-2%, -2%)
+  }
+
+  90% {
+    transform: translate(1%, -1%)
+  }
+
+  100% {
+    transform: translate(0, 0)
+  }
+}
+
+/* Scroll-margin for anchor navigation */
+[id] {
+  scroll-margin-top: 64px;
+}
