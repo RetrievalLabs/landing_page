@@ -106,7 +106,7 @@ export default function Problem() {
           </div>
 
           {/* Asymmetrical Risk Items - Audit Trail Rhythm */}
-          <div className="md:w-7/12 v-stack gap-32 md:gap-64 relative z-10 pt-16">
+          <div className="md:w-7/12 v-stack gap-32 md:gap-64 relative z-10 pt-16 pb-32">
             {risks.map((risk, i) => (
               <div
                 key={risk.id}
