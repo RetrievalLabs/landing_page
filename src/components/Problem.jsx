@@ -6,22 +6,22 @@ gsap.registerPlugin(ScrollTrigger);
 
 const risks = [
   {
-    id: 'SEC-01',
-    title: 'Relevance ≠ Authorization',
-    desc: 'Vector databases prioritize semantic similarity over access control. High-relevance results can inadvertently leak restricted knowledge when retrieval bypasses permission layers.',
-    label: 'Architecture Risk'
+    id: 'KNW-01',
+    title: 'Knowledge is fragmented',
+    desc: 'Critical company context is split across docs, chats, tickets, dashboards, repos, and email. Employees waste time searching instead of acting.',
+    label: 'Context Sprawl'
   },
   {
-    id: 'SEC-02',
-    title: 'Permission Drift',
-    desc: 'Permissions in source systems like SharePoint change in milliseconds. Traditional indexing pipelines lag by hours, creating critical windows of unauthorized data access.',
-    label: 'Temporal Risk'
+    id: 'KNW-02',
+    title: 'Search misses the operating context',
+    desc: 'Keyword and vector search can surface documents, but they rarely connect entities, decisions, workflows, ownership, and history into a usable company memory.',
+    label: 'Retrieval Gap'
   },
   {
-    id: 'SEC-03',
-    title: 'Agentic Escape',
-    desc: 'Autonomous agents navigate knowledge stores with higher efficiency than humans. Without side-car auth, they can discover and aggregate sensitive data through recursive retrieval.',
-    label: 'Capability Risk'
+    id: 'KNW-03',
+    title: 'Agents need grounded context',
+    desc: 'Company-wide tasks require more than generic automation. Agents need structured enterprise knowledge to retrieve the right information and execute useful workflows.',
+    label: 'Execution Gap'
   }
 ];
 
@@ -91,15 +91,15 @@ export default function Problem() {
                 <div className="h-stack gap-4">
                   <div className="problem-deco-line w-12 h-px bg-sky-400 origin-left scale-x-0" />
                   <p className="font-mono text-[10px] uppercase tracking-[0.5em] text-sky-400 font-semibold">
-                    Diagnostic // Audit
+                    Diagnostic // Knowledge
                   </p>
                 </div>
                 <h2 className="text-5xl sm:text-7xl lg:text-8xl tracking-tighter">
-                  The <span className="italic font-serif">Permission</span> Delta
+                  The <span className="italic font-serif">Context</span> Gap
                 </h2>
                 <p className="mt-4 md:mt-8 text-lg md:text-xl text-slate-400 font-sans leading-relaxed max-w-sm">
-                  Current RAG implementations assume permissions are a frontend concern.
-                  In the enterprise, if the retrieval layer is compromised, the model becomes a vulnerability.
+                  Enterprise knowledge is scattered across tools and teams.
+                  RetrievalLabs.ai connects that context so people and agents can use it to get work done.
                 </p>
               </div>
             </div>
@@ -116,7 +116,7 @@ export default function Problem() {
                   }`}
               >
                 <div className="absolute -left-12 top-0 font-mono text-[10px] text-white/5 rotate-90 origin-top-left translate-y-4 hidden md:block tracking-widest whitespace-nowrap">
-                  DEPT_ACCESS_VULN // 0x{risk.id.split('-')[1]} // SEG_{risk.label.split(' ')[0].toUpperCase()}
+                  ENTERPRISE_CONTEXT // 0x{risk.id.split('-')[1]} // SEG_{risk.label.split(' ')[0].toUpperCase()}
                 </div>
                 <div className="border-t border-white/10 pt-12 bg-navy-950/20 backdrop-blur-sm transition-all duration-700 group-hover:border-sky-500/30 group-hover:bg-navy-950/40">
                   <span className="font-mono text-sky-400 text-xs tracking-[0.2em] block mb-6 uppercase">

@@ -4,9 +4,15 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 gsap.registerPlugin(ScrollTrigger);
 
-const sources = ['GDrive', 'Confluence', 'SharePoint', 'Slack', 'S3'];
-const stacks = ['LangChain', 'LlamaIndex', 'Haystack', 'Custom'];
+const sources = ['GDrive', 'Confluence', 'SharePoint', 'Slack', 'MS Teams', 'GitHub', 'Email', 'Grafana', 'S3'];
+const stacks = ['Agents', 'MCP', 'Retrieval'];
 const clouds = ['AWS', 'Azure', 'GCP', 'On-Prem'];
+
+const groups = [
+  { title: 'SOURCES', items: sources, angle: 180, radius: 290, itemOffset: 72, spread: 100, labelOffsetY: -26 },
+  { title: 'STACKS', items: stacks, angle: 0, radius: 220, itemOffset: 90, spread: 30, labelOffsetY: -26 },
+  { title: 'CLOUDS', items: clouds, angle: 90, radius: 220, itemOffset: 90, spread: 48, labelOffsetY: 42 },
+];
 
 export default function Architecture() {
   const containerRef = useRef(null);
@@ -14,14 +20,19 @@ export default function Architecture() {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      const paths = svgRef.current.querySelectorAll('.conn-path');
+      if (!svgRef.current) return;
+
+      const paths = svgRef.current.querySelectorAll('.conn-path, .core-link');
       const nodes = svgRef.current.querySelectorAll('.conn-node');
+      const stackNodes = svgRef.current.querySelectorAll('.stack-node');
+      const otherNodes = svgRef.current.querySelectorAll('.conn-node:not(.stack-node)');
       const labels = containerRef.current.querySelectorAll('.group-label');
 
       // Initial state
       gsap.set(paths, { strokeDasharray: 1000, strokeDashoffset: 1000 });
-      gsap.set(nodes, { scale: 0, opacity: 0 });
+      gsap.set(nodes, { scale: 0.6, opacity: 0, transformOrigin: 'center center', transformBox: 'fill-box' });
       gsap.set(labels, { opacity: 0, y: 20 });
+      gsap.set('.core-hub', { transformOrigin: 'center center', transformBox: 'fill-box' });
 
       const tl = gsap.timeline({
         scrollTrigger: {
@@ -35,7 +46,8 @@ export default function Architecture() {
 
       tl.to('.core-hub', { scale: 1.1, duration: 1 })
         .to(paths, { strokeDashoffset: 0, stagger: 0.1, duration: 2 }, '-=0.5')
-        .to(nodes, { scale: 1, opacity: 1, stagger: 0.05, duration: 1 }, '-=1.5')
+        .to(otherNodes, { scale: 1, opacity: 1, stagger: 0.04, duration: 1 }, '-=1.2')
+        .to(stackNodes, { scale: 1, opacity: 1, stagger: 0.12, duration: 1 }, '-=0.2')
         .to(labels, { opacity: 1, y: 0, stagger: 0.2, duration: 1 }, '-=1');
 
     }, containerRef);
@@ -47,15 +59,12 @@ export default function Architecture() {
     <section id="architecture" ref={containerRef} className="relative min-h-[calc(100vh-4rem)] pt-20 bg-transparent flex flex-col items-center justify-start overflow-hidden">
       <div className="section-container relative z-10 w-full flex flex-col items-center justify-start">
         <div className="text-center max-w-2xl mt-8 mb-4">
-          <p className="font-mono text-[10px] uppercase tracking-[0.5em] text-sky-400 mb-2 font-semibold">
-            // Unified Authorization Protocol
-          </p>
           <h2 className="text-4xl sm:text-6xl mb-0">
             The Connectivity <span className="italic font-serif">Hub</span>
           </h2>
         </div>
 
-        <div className="relative w-full flex-none max-h-[60vh] max-w-5xl mx-auto flex items-center justify-center">
+        <div className="relative w-full flex-none aspect-[1000/620] max-h-[60vh] max-w-5xl mx-auto flex items-center justify-center">
           {/* SVG Hub Visual - Overhauled for high precision geometry */}
           <svg ref={svgRef} viewBox="0 0 1000 620" className="w-full h-full overflow-visible">
             <defs>
@@ -71,12 +80,8 @@ export default function Architecture() {
             </defs>
 
             {/* Radiant Connections - Calculated for perfect convergence at (500, 310) */}
-            {[
-              { title: 'SOURCES', items: sources, angle: -175, color: '#38bdf8' },
-              { title: 'STACKS', items: stacks, angle: -5, color: '#38bdf8' },
-              { title: 'CLOUDS', items: clouds, angle: 90, color: '#38bdf8' }
-            ].map((group) => {
-              const radius = 220;
+            {groups.map((group) => {
+              const radius = group.radius;
               const angleRad = (group.angle * Math.PI) / 180;
               const gx = 500 + radius * Math.cos(angleRad);
               const gy = 310 + radius * Math.sin(angleRad);
@@ -91,17 +96,27 @@ export default function Architecture() {
                     strokeWidth="1.5" 
                     fill="none" 
                   />
+                  <line
+                    className="core-link"
+                    x1="500"
+                    y1="310"
+                    x2={gx}
+                    y2={gy}
+                    stroke="white"
+                    strokeOpacity="0.35"
+                    strokeWidth="1"
+                  />
                   
                   {group.items.map((item, i) => {
-                    const spread = (group.items.length - 1) * 12;
-                    const itemAngle = group.angle - spread/2 + (i * 12);
+                    const step = group.items.length > 1 ? group.spread / (group.items.length - 1) : 0;
+                    const itemAngle = group.angle - group.spread / 2 + i * step;
                     const itemRad = (itemAngle * Math.PI) / 180;
-                    const dist = radius + 90;
+                    const dist = radius + group.itemOffset;
                     const ix = 500 + dist * Math.cos(itemRad);
                     const iy = 310 + dist * Math.sin(itemRad);
 
                     return (
-                      <g key={item} className="conn-node origin-center">
+                      <g key={item} className={`conn-node origin-center ${group.title === 'STACKS' ? 'stack-node' : ''}`}>
                         {/* Node point */}
                         <circle cx={ix} cy={iy} r="3" fill="#38bdf8" filter="url(#nodeGlow)" />
                         
@@ -123,7 +138,7 @@ export default function Architecture() {
                   {/* Group Label - Adjusted for optical centering */}
                   <text 
                     x={gx} 
-                    y={gy + (group.angle === 90 ? 40 : -25)} 
+                    y={gy + group.labelOffsetY} 
                     textAnchor="middle" 
                     className="group-label fill-white font-heading text-4xl tracking-tight italic opacity-95"
                   >
@@ -139,7 +154,7 @@ export default function Architecture() {
               <circle cx="500" cy="310" r="55" fill="#38bdf8" fillOpacity="0.05" stroke="#38bdf8" strokeWidth="0.5" strokeOpacity="0.5" filter="url(#nodeGlow)" />
               <text x="500" y="315" textAnchor="middle" className="fill-white font-mono text-[11px] font-bold tracking-[0.5em] uppercase opacity-90">CORE_ENGINE</text>
               
-              {/* Inner details for "High-Auth" feel */}
+              {/* Inner details for graph-system feel */}
               <circle cx="500" cy="310" r="45" fill="none" stroke="#38bdf8" strokeWidth="0.5" strokeOpacity="0.1" strokeDasharray="4 4" />
             </g>
           </svg>
@@ -147,8 +162,7 @@ export default function Architecture() {
 
         <div className="mt-4 text-center max-w-xl pb-10">
           <p className="text-xl text-slate-400 font-sans leading-relaxed">
-            Retrieval Labs is built for the fragmented enterprise stack. 
-            One protocol to rule every retrieval path.
+            RetrievalLabs.ai collects context from fragmented enterprise sources, stores it securely with RBAC and auth, builds a knowledge graph, and gives people or agents only the knowledge they are allowed to access.
           </p>
         </div>
       </div>

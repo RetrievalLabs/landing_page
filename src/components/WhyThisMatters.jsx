@@ -6,19 +6,19 @@ gsap.registerPlugin(ScrollTrigger);
 
 const consequences = [
   {
-    title: 'The AI Trust Gap',
-    desc: 'Enterprises refuse to rollout RAG if they cannot guarantee that local source-level permissions are respected in the LLM response.',
-    detail: 'Legal compliance'
+    title: 'Faster Answers',
+    desc: 'Employees can retrieve important information from across company systems without knowing where it lives or who last touched it.',
+    detail: 'Knowledge retrieval'
   },
   {
-    title: 'Shadow Retrieval',
-    desc: 'Agents discovering files they should not see leads to "Privilege Escalation-by-Search" – a new class of enterprise vulnerability.',
-    detail: 'Security breach'
+    title: 'Shared Context',
+    desc: 'Teams stop rebuilding context from scratch. The knowledge graph preserves relationships across tools, projects, customers, incidents, and decisions.',
+    detail: 'Company memory'
   },
   {
-    title: 'Rollout Paralysis',
-    desc: 'Security teams block productive AI projects because the indexing pipeline is a "giant copy machine" with no authorization fidelity.',
-    detail: 'Operational drag'
+    title: 'Useful Agents',
+    desc: 'Agents become more than chat interfaces. They use company context to summarize, route, investigate, draft, retrieve, and complete operational tasks.',
+    detail: 'Task execution'
   }
 ];
 
@@ -26,37 +26,37 @@ export default function WhyThisMatters() {
   const containerRef = useRef(null);
 
   useEffect(() => {
-    const cards = containerRef.current.querySelectorAll('.stack-card');
+    const ctx = gsap.context(() => {
+      const cards = containerRef.current.querySelectorAll('.stack-card');
 
-    // Stacked pinning effect
-    cards.forEach((card, i) => {
-      // Pinning
-      ScrollTrigger.create({
-        trigger: card,
-        start: `top ${15 + i * 2}%`,
-        pin: true,
-        pinSpacing: false,
-        endTrigger: containerRef.current,
-        end: 'bottom 100%',
-      });
-
-      // Normalized scaling and opacity transition
-      gsap.to(card, {
-        scale: 0.95, // Consistent scale target
-        opacity: 0,
-        ease: 'power1.inOut',
-        scrollTrigger: {
+      // Stacked pinning effect
+      cards.forEach((card, i) => {
+        // Pinning
+        ScrollTrigger.create({
           trigger: card,
           start: `top ${15 + i * 2}%`,
-          end: 'bottom 20%',
-          scrub: true,
-        }
-      });
-    });
+          pin: true,
+          pinSpacing: false,
+          endTrigger: containerRef.current,
+          end: 'bottom 100%',
+        });
 
-    return () => {
-      ScrollTrigger.getAll().forEach(t => t.kill());
-    };
+        // Normalized scaling and opacity transition
+        gsap.to(card, {
+          scale: 0.95, // Consistent scale target
+          opacity: 0,
+          ease: 'power1.inOut',
+          scrollTrigger: {
+            trigger: card,
+            start: `top ${15 + i * 2}%`,
+            end: 'bottom 20%',
+            scrub: true,
+          }
+        });
+      });
+    }, containerRef);
+
+    return () => ctx.revert();
   }, []);
 
   return (
@@ -64,10 +64,10 @@ export default function WhyThisMatters() {
       <div className="section-container">
         <div className="max-w-xl mb-24">
           <h2 className="text-7xl sm:text-8xl mb-8">
-            Why <span className="italic font-serif">Infrastructure</span> is the answer
+            Why <span className="italic font-serif">Knowledge</span> is the layer
           </h2>
           <p className="text-xl text-slate-400 font-sans leading-relaxed">
-            Permissions are not metadata. They are the core constraint of enterprise knowledge.
+            Enterprise AI needs live company context, not another disconnected search box.
           </p>
         </div>
 

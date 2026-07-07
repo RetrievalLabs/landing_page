@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import logoUrl from '../../assets/logo.png';
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -14,6 +15,8 @@ export default function Navbar() {
     { label: 'Problem', href: '#problem' },
     { label: 'Approach', href: '#solution' },
     { label: 'Architecture', href: '#architecture' },
+    { label: 'Products', href: '#products' },
+    { label: 'Founders', href: '#founders' },
   ];
 
   return (
@@ -26,11 +29,13 @@ export default function Navbar() {
       <div className="section-container h-stack justify-between">
         {/* Logo - Minimalist */}
         <a href="#" className="h-stack gap-3 group">
-          <div className="w-6 h-6 rounded bg-white flex items-center justify-center transition-transform duration-500 group-hover:rotate-90">
-            <div className="w-3 h-3 bg-navy-950 rounded-sm" />
-          </div>
-          <span className="font-sans font-bold text-white text-lg tracking-tight uppercase">
-            Retrieval Labs
+          <div
+            className="w-8 h-8 rounded bg-center bg-no-repeat transition-transform duration-500 group-hover:scale-105"
+            style={{ backgroundImage: `url(${logoUrl})`, backgroundSize: '360%' }}
+            aria-hidden="true"
+          />
+          <span className="font-sans font-bold text-white text-lg tracking-tight">
+            RetrievalLabs.ai
           </span>
         </a>
 
@@ -47,9 +52,6 @@ export default function Navbar() {
               </a>
             ))}
           </div>
-          <a href="#cta" className="btn-infra !py-2.5 !px-6 !text-xs !rounded-md uppercase tracking-wider">
-            Access Alpha
-          </a>
         </div>
 
         {/* Mobile Toggle */}
@@ -80,13 +82,6 @@ export default function Navbar() {
               {link.label}
             </a>
           ))}
-          <a
-            href="#cta"
-            onClick={() => setMenuOpen(false)}
-            className="btn-infra mt-8"
-          >
-            Access Alpha
-          </a>
         </div>
       </div>
     </nav>

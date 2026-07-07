@@ -1,6 +1,6 @@
 # Retrieval Labs Landing Page
 
-Retrieval Labs is infrastructure for secure knowledge access in enterprise AI. It helps agents, search, and RAG systems retrieve only what each user is already allowed to see.
+RetrievalLabs.ai is an enterprise knowledge system. It connects fragmented company data sources into secure, RBAC-aware knowledge graphs and agent workflows that help teams retrieve important information and complete company-wide tasks.
 
 ## Quick Start
 
@@ -21,6 +21,6 @@ The site will be available at `http://localhost:8080`.
 - **Deployment**: Optimized Nginx container
 
 ## Design Principles
-- **Authority**: Instrument Serif + Instrument Sans pairing.
+- **Typography**: Instrument Serif + Instrument Sans pairing.
 - **Precision**: 8px rhythm and strictly defined spatial system.
 - **Immersion**: GSAP scroll-triggered architecture visual reveals.

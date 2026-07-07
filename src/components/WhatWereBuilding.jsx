@@ -6,19 +6,24 @@ gsap.registerPlugin(ScrollTrigger);
 
 const pillars = [
   {
-    title: 'Permission Sync',
-    desc: 'Bridges the gap between physical source permissions and vector retrieval. Real-time reconciliation of ACLs across Confluence, SharePoint, and S3.',
-    tag: 'INTEGRATION'
+    title: 'Context Ingestion',
+    desc: 'Connects fragmented enterprise sources like SharePoint, Slack, GitHub, email, dashboards, and docs into one continuously updated knowledge system.',
+    tag: 'SOURCES'
   },
   {
-    title: 'Retrieval Enforcement',
-    desc: 'A side-car proxy for RAG pipelines. It intercepts every retrieval request and filters results against the current permission state of the user.',
-    tag: 'RUNTIME'
+    title: 'Knowledge Graphs',
+    desc: 'Builds relationships between people, projects, systems, decisions, incidents, and documents so company context becomes structured and searchable.',
+    tag: 'GRAPH'
   },
   {
-    title: 'Authorized Response',
-    desc: 'Ensures the final LLM output is grounded only in data the user has access to. Prevents cross-pollination of sensitive knowledge.',
-    tag: 'FIDELITY'
+    title: 'Agent Workflows',
+    desc: 'Uses the knowledge layer to retrieve important information, answer operational questions, and help teams complete company-wide tasks.',
+    tag: 'AGENTS'
+  },
+  {
+    title: 'Secure RBAC',
+    desc: 'Stores collected company knowledge securely and applies role-based access control so people and agents only use the knowledge they are allowed to access.',
+    tag: 'ACCESS'
   }
 ];
 
@@ -26,23 +31,26 @@ export default function WhatWereBuilding() {
   const sectionRef = useRef(null);
 
   useEffect(() => {
-    const items = sectionRef.current.querySelectorAll('.pillar-item');
+    const ctx = gsap.context(() => {
+      const items = sectionRef.current.querySelectorAll('.pillar-item');
 
-    gsap.set(items, { y: 50, opacity: 0 });
+      gsap.set(items, { y: 50, opacity: 0 });
 
-    gsap.to(items, {
-      y: 0,
-      opacity: 1,
-      stagger: 0.1,
-      duration: 1.2,
-      ease: 'power4.out',
-      scrollTrigger: {
-        trigger: sectionRef.current,
-        start: 'top 90%',
-        once: true
-      }
-    });
+      gsap.to(items, {
+        y: 0,
+        opacity: 1,
+        stagger: 0.1,
+        duration: 1.2,
+        ease: 'power4.out',
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: 'top 90%',
+          once: true
+        }
+      });
+    }, sectionRef);
 
+    return () => ctx.revert();
   }, []);
 
   return (
@@ -54,15 +62,15 @@ export default function WhatWereBuilding() {
               // The Product
             </p>
             <h2 className="text-7xl sm:text-9xl">
-              Building the <span className="italic font-serif">Auth-Layer</span> for AI
+              Building the <span className="italic font-serif">Knowledge System</span> for Enterprise AI
             </h2>
           </div>
           <p className="text-slate-500 font-sans max-w-sm mb-4">
-            Infrastructure that helps enterprise AI systems respect source permissions consistently.
+            Infrastructure that turns fragmented company knowledge into secure context agents can reason over and act on.
           </p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-2 xl:grid-cols-4 gap-8">
           {pillars.map((pillar, i) => (
             <div key={i} className="pillar-item v-stack justify-between card-monolith min-h-[440px] group transition-all duration-500 hover:border-white/20">
               <div className="v-stack gap-8">
