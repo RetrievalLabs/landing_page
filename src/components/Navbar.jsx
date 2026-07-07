@@ -12,9 +12,6 @@ export default function Navbar() {
   }, []);
 
   const navLinks = [
-    { label: 'Problem', href: '#problem' },
-    { label: 'Approach', href: '#solution' },
-    { label: 'Architecture', href: '#architecture' },
     { label: 'Products', href: '#products' },
     { label: 'Founders', href: '#founders' },
   ];
@@ -52,6 +49,14 @@ export default function Navbar() {
               </a>
             ))}
           </div>
+          <a
+            href="https://calendly.com/yp969803/30min"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-xs font-mono uppercase tracking-[0.2em] bg-white/10 border border-white/20 text-white hover:bg-white hover:text-navy-950 px-4 py-2 rounded-full transition-all duration-300"
+          >
+            Talk to Founders
+          </a>
         </div>
 
         {/* Mobile Toggle */}
@@ -82,6 +87,15 @@ export default function Navbar() {
               {link.label}
             </a>
           ))}
+          <a
+            href="https://calendly.com/yp969803/30min"
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => setMenuOpen(false)}
+            className="font-heading text-4xl text-sky-400 hover:text-white transition-colors"
+          >
+            Talk to Founders
+          </a>
         </div>
       </div>
     </nav>
