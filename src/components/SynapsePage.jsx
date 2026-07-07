@@ -1,4 +1,9 @@
 import synapseLogo from '../../assets/synapse-logo.svg';
+import { useEffect, useRef } from 'react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
 
 const capabilities = [
   'Connects operational knowledge from services, repositories, pull requests, Jira issues, SharePoint pages, incidents, decisions, owners, dashboards, and team discussions.',
@@ -16,6 +21,112 @@ const questions = [
   'Can this Jira ticket become a safe, reviewed pull request?',
   'Where are the dashboards, alerts, logs, and deploy steps?',
 ];
+
+function PipelineDiagram() {
+  const diagramRef = useRef(null);
+
+  useEffect(() => {
+    if (!diagramRef.current) return;
+    const ctx = gsap.context(() => {
+      const nodes = diagramRef.current.querySelectorAll('.flow-node');
+      const arrows = diagramRef.current.querySelectorAll('.flow-arrow');
+      const label = diagramRef.current.querySelector('.flow-label');
+
+      gsap.set([...nodes, label], { opacity: 0, y: 16 });
+      gsap.set(arrows, { opacity: 0 });
+
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: diagramRef.current,
+          start: 'top 80%',
+          toggleActions: 'play none none none',
+        },
+      });
+
+      tl.to('.flow-source', { opacity: 1, y: 0, stagger: 0.06, duration: 0.5 })
+        .to('.flow-arrow-1', { opacity: 1, duration: 0.3 }, '-=0.2')
+        .to('.flow-graph', { opacity: 1, y: 0, duration: 0.5 }, '-=0.2')
+        .to('.flow-arrow-2', { opacity: 1, duration: 0.3 }, '-=0.2')
+        .to('.flow-query', { opacity: 1, y: 0, duration: 0.5 }, '-=0.2')
+        .to('.flow-arrow-3', { opacity: 1, duration: 0.3 }, '-=0.2')
+        .to('.flow-agent', { opacity: 1, y: 0, duration: 0.5 }, '-=0.2')
+        .to('.flow-arrow-4', { opacity: 1, duration: 0.3 }, '-=0.2')
+        .to('.flow-output', { opacity: 1, y: 0, stagger: 0.08, duration: 0.5 }, '-=0.2')
+        .to(label, { opacity: 1, y: 0, duration: 0.4 }, '-=0.2');
+    }, diagramRef);
+    return () => ctx.revert();
+  }, []);
+
+  return (
+    <div ref={diagramRef}>
+      <svg viewBox="0 0 960 330" className="w-full max-w-4xl mx-auto" preserveAspectRatio="xMidYMid meet">
+        <defs>
+          <marker id="synapseArrow" markerWidth="7" markerHeight="5" refX="7" refY="2.5" orient="auto">
+            <path d="M0,0 L7,2.5 L0,5" fill="rgba(255,255,255,0.25)" />
+          </marker>
+        </defs>
+
+        {/* Row 1: Source nodes */}
+        {['Jira', 'GitHub', 'SharePoint', 'Slack', 'Grafana'].map((src, i) => (
+          <g key={src} className="flow-node flow-source">
+            <rect x={40 + i * 184} y="8" width="140" height="32" rx="6" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.12)" strokeWidth="1" />
+            <text x={110 + i * 184} y="29" textAnchor="middle" className="fill-slate-400 font-mono text-[11px] tracking-wider">{src}</text>
+          </g>
+        ))}
+
+        {/* Down arrows from sources to graph */}
+        {[110, 294, 478, 662, 846].map((x, i) => (
+          <line key={`a1-${i}`} x1={x} y1="40" x2={x} y2="78" stroke="rgba(255,255,255,0.15)" strokeWidth="1" markerEnd="url(#synapseArrow)" className="flow-arrow flow-arrow-1" />
+        ))}
+
+        {/* Knowledge Graph */}
+        <g className="flow-node flow-graph">
+          <rect x="340" y="78" width="280" height="52" rx="10" fill="rgba(56,189,248,0.05)" stroke="#38bdf8" strokeWidth="1" strokeOpacity="0.25" />
+          <text x="480" y="101" textAnchor="middle" className="fill-sky-400 font-mono text-[12px] font-bold tracking-[0.25em]">KNOWLEDGE GRAPH</text>
+          <text x="480" y="118" textAnchor="middle" className="fill-slate-500 font-mono text-[10px] tracking-wider">Neo4j · RBAC · Embeddings</text>
+        </g>
+
+        {/* Down arrow graph → query */}
+        <line x1="480" y1="130" x2="480" y2="150" stroke="rgba(255,255,255,0.15)" strokeWidth="1" markerEnd="url(#synapseArrow)" className="flow-arrow flow-arrow-2" />
+
+        {/* Query */}
+        <g className="flow-node flow-query">
+          <rect x="340" y="150" width="280" height="42" rx="10" fill="rgba(250,204,21,0.04)" stroke="rgba(250,204,21,0.3)" strokeWidth="1" />
+          <text x="480" y="171" textAnchor="middle" className="fill-amber-400 font-mono text-[11px] font-bold tracking-[0.2em]">QUERY</text>
+          <text x="480" y="187" textAnchor="middle" className="fill-slate-500 font-mono text-[10px] tracking-wider">Project context · Owners · Incidents · Decisions</text>
+        </g>
+
+        {/* Down arrow query → agent */}
+        <line x1="480" y1="192" x2="480" y2="214" stroke="rgba(255,255,255,0.15)" strokeWidth="1" markerEnd="url(#synapseArrow)" className="flow-arrow flow-arrow-3" />
+
+        {/* Agent */}
+        <g className="flow-node flow-agent">
+          <rect x="340" y="214" width="280" height="42" rx="10" fill="rgba(139,92,246,0.05)" stroke="rgba(139,92,246,0.35)" strokeWidth="1" />
+          <text x="480" y="238" textAnchor="middle" className="fill-purple-400 font-mono text-[12px] font-bold tracking-[0.25em]">TICKET-TO-PR AGENT</text>
+        </g>
+
+        {/* Branch arrows agent → outputs */}
+        <line x1="480" y1="256" x2="320" y2="278" stroke="rgba(255,255,255,0.15)" strokeWidth="1" markerEnd="url(#synapseArrow)" className="flow-arrow flow-arrow-4" />
+        <line x1="480" y1="256" x2="640" y2="278" stroke="rgba(255,255,255,0.15)" strokeWidth="1" markerEnd="url(#synapseArrow)" className="flow-arrow flow-arrow-4" />
+
+        {/* Output: Sandbox */}
+        <g className="flow-node flow-output">
+          <rect x="200" y="278" width="240" height="32" rx="6" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.12)" strokeWidth="1" />
+          <text x="320" y="299" textAnchor="middle" className="fill-slate-400 font-mono text-[11px] tracking-wider">Sandbox &amp; Tests</text>
+        </g>
+
+        {/* Output: PR */}
+        <g className="flow-node flow-output">
+          <rect x="520" y="278" width="240" height="32" rx="6" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.12)" strokeWidth="1" />
+          <text x="640" y="299" textAnchor="middle" className="fill-slate-400 font-mono text-[11px] tracking-wider">GitHub Pull Request</text>
+        </g>
+      </svg>
+      <p className="flow-label text-center mt-8 text-sm text-slate-500 font-mono tracking-wider">
+        Sources &rarr; Graph &rarr; Query &rarr; Agent &rarr; Sandbox &rarr; PR
+      </p>
+    </div>
+  );
+}
 
 export default function SynapsePage() {
   return (
@@ -73,6 +184,15 @@ export default function SynapsePage() {
             </div>
           </section>
         </div>
+
+        <section className="mt-16">
+          <div className="text-center mb-10">
+            <p className="font-mono text-xs uppercase tracking-[0.4em] text-sky-400 mb-4 font-semibold">// How it works</p>
+            <h2 className="text-4xl sm:text-5xl">From fragmented data to shipped code</h2>
+          </div>
+
+          <PipelineDiagram />
+        </section>
       </section>
     </main>
   );
