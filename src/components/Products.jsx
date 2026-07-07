@@ -4,7 +4,7 @@ const products = [
   {
     name: 'Synapse',
     tag: 'MVP Stage',
-    desc: 'An AI organizational memory and coding agent for engineering teams. Synapse connects Jira, repositories, PRs, SharePoint, incidents, decisions, dashboards, and team discussions into a searchable knowledge graph, then turns approved Jira tickets into sandbox-tested implementation pull requests.',
+    desc: 'An AI organizational memory and coding agent. Synapse connects Jira, repos, PRs, and more into a knowledge graph, then turns approved tickets into sandbox-tested pull requests.',
     href: '/?product=synapse',
   },
 ];
