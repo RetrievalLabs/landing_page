@@ -55,7 +55,7 @@ export default function Navbar() {
             rel="noopener noreferrer"
             className="text-xs font-mono uppercase tracking-[0.2em] bg-white/10 border border-white/20 text-white hover:bg-white hover:text-navy-950 px-4 py-2 rounded-full transition-all duration-300"
           >
-            Talk to Founders
+            Book a demo
           </a>
         </div>
 
@@ -94,7 +94,7 @@ export default function Navbar() {
             onClick={() => setMenuOpen(false)}
             className="font-heading text-4xl text-sky-400 hover:text-white transition-colors"
           >
-            Talk to Founders
+            Book a demo
           </a>
         </div>
       </div>

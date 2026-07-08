@@ -16,10 +16,10 @@ export default function CTA() {
 
         <div className="v-stack sm:h-stack gap-6">
           <a href="mailto:yash_kp@ee.iitr.ac.in,divyanshu_k@me.iitr.ac.in" className="btn-infra">
-            Request Access
+            Book a pilot
           </a>
           <a href="mailto:yash_kp@ee.iitr.ac.in,divyanshu_k@me.iitr.ac.in" className="btn-infra-ghost">
-            Talk to the Founders
+            Book a demo
           </a>
         </div>
         

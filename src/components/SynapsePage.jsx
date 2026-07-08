@@ -196,10 +196,10 @@ export default function SynapsePage() {
 
         <section className="mt-16">
           <div className="text-center mb-10">
-            <p className="font-mono text-xs uppercase tracking-[0.4em] text-sky-400 mb-4 font-semibold">// Early Access</p>
-            <h2 className="text-4xl sm:text-5xl">Get early access</h2>
+            <p className="font-mono text-xs uppercase tracking-[0.4em] text-sky-400 mb-4 font-semibold">// Pilot</p>
+            <h2 className="text-4xl sm:text-5xl">Book a pilot</h2>
             <p className="text-lg text-slate-400 mt-4 max-w-xl mx-auto">
-              Join our early access program. Fill out the form and we'll get you set up.
+              Tell us about your engineering workflow and we'll set up a focused Synapse pilot.
             </p>
           </div>
 
@@ -207,7 +207,7 @@ export default function SynapsePage() {
             <iframe
               src="https://docs.google.com/forms/d/1pv0jLUb9-S2M4Hbv3_DHvozd9790LcC5cjRm7LDdMzk/viewform?embedded=true"
               className="w-full min-h-[800px] border-0"
-              title="Synapse Early Access Form"
+              title="Synapse Pilot Form"
             >
               Loading…
             </iframe>
