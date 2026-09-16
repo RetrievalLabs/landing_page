@@ -40,8 +40,8 @@ export default function Hero() {
         </p>
         
         <div className="hero-actions flex flex-col sm:flex-row items-center gap-4 sm:gap-6 mt-10 sm:mt-16 opacity-0">
-          <a href="#architecture" className="btn-infra-ghost w-full sm:w-auto">
-            View Architecture
+          <a href="#products" className="btn-infra-ghost w-full sm:w-auto">
+            View Products
           </a>
         </div>
       </div>
