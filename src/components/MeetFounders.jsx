@@ -31,9 +31,6 @@ export default function MeetFounders() {
           <h2 className="text-6xl sm:text-8xl mb-8">
             Meet the <span className="italic font-serif">Founders</span>
           </h2>
-          <p className="text-xl text-slate-400 font-sans leading-relaxed max-w-2xl">
-            We are building RetrievalLabs.ai to help enterprises connect fragmented knowledge, secure it with RBAC, and use it through retrieval and agent workflows.
-          </p>
         </div>
 
         <div className="grid md:grid-cols-2 gap-8">
