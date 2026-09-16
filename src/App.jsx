@@ -2,7 +2,6 @@ import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import Problem from './components/Problem';
 import WhyThisMatters from './components/WhyThisMatters';
-import WhatWereBuilding from './components/WhatWereBuilding';
 import Architecture from './components/Architecture';
 import Products from './components/Products';
 import SupportedBy from './components/SupportedBy';
@@ -17,8 +16,6 @@ export default function App() {
         <Hero />
         <Problem />
         <WhyThisMatters />
-        <WhatWereBuilding />
-        <Architecture />
         <Products />
         <SupportedBy />
         <MeetFounders />
