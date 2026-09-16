@@ -6,19 +6,19 @@ gsap.registerPlugin(ScrollTrigger);
 
 const consequences = [
   {
-    title: 'Faster Answers',
-    desc: 'Employees can retrieve important information from across company systems without knowing where it lives or who last touched it.',
-    detail: 'Knowledge retrieval'
+    title: 'Structured Enterprise Knowledge',
+    desc: 'RetrievalLabs turns fragmented information—codebases, databases, documents, tools, tickets, and people—into graph-structured, permission-aware knowledge that AI can reason over.',
+    detail: 'Knowledge graphs'
   },
   {
-    title: 'Shared Context',
-    desc: 'Teams stop rebuilding context from scratch. The knowledge graph preserves relationships across tools, projects, customers, incidents, and decisions.',
-    detail: 'Company memory'
+    title: 'Contextual AI Agents',
+    desc: 'Agents that understand how the organization works: its systems, workflows, dependencies, decisions, and institutional knowledge—ready to execute complex, long-running enterprise work.',
+    detail: 'Agentic infrastructure'
   },
   {
-    title: 'Useful Agents',
-    desc: 'Agents become more than chat interfaces. They use company context to summarize, route, investigate, draft, retrieve, and complete operational tasks.',
-    detail: 'Task execution'
+    title: 'Safe, Verifiable Action',
+    desc: 'AI agents operate with secure access controls, contextual verification, and human oversight throughout—bridging organizational knowledge with capable, trustworthy execution.',
+    detail: 'Enterprise-grade control'
   }
 ];
 
@@ -64,10 +64,10 @@ export default function WhyThisMatters() {
       <div className="section-container">
         <div className="max-w-xl mb-24">
           <h2 className="text-7xl sm:text-8xl mb-8">
-            Why <span className="italic font-serif">Knowledge</span> is the layer
+            Why <span className="italic font-serif">Context</span> is the layer
           </h2>
           <p className="text-xl text-slate-400 font-sans leading-relaxed">
-            Enterprise AI needs live company context, not another disconnected search box.
+            Enterprise AI adoption requires connecting organizational knowledge with capable agents. Models alone aren't enough—context is the foundation.
           </p>
         </div>
 

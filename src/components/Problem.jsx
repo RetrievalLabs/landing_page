@@ -6,21 +6,21 @@ gsap.registerPlugin(ScrollTrigger);
 
 const risks = [
   {
-    id: 'KNW-01',
-    title: 'Knowledge is fragmented',
-    desc: 'Critical company context is split across docs, chats, tickets, dashboards, repos, and email. Employees waste time searching instead of acting.',
+    id: 'CTX-01',
+    title: 'Context is fragmented',
+    desc: 'Critical organizational knowledge is scattered across codebases, databases, documents, internal tools, tickets, and people. No single system connects how the organization actually works.',
     label: 'Context Sprawl'
   },
   {
-    id: 'KNW-02',
-    title: 'Search misses the operating context',
-    desc: 'Keyword and vector search can surface documents, but they rarely connect entities, decisions, workflows, ownership, and history into a usable company memory.',
-    label: 'Retrieval Gap'
+    id: 'CTX-02',
+    title: 'AI cannot understand the organization',
+    desc: 'Models alone cannot reason about business behavior, system dependencies, workflows, or institutional decisions. Without deep context, AI produces shallow or unsafe results.',
+    label: 'Understanding Gap'
   },
   {
-    id: 'KNW-03',
-    title: 'Agents need grounded context',
-    desc: 'Company-wide tasks require more than generic automation. Agents need structured enterprise knowledge to retrieve the right information and execute useful workflows.',
+    id: 'CTX-03',
+    title: 'Agents need structured, permission-aware knowledge',
+    desc: 'To perform real enterprise work, AI agents need more than raw data. They need knowledge graphs, contextual retrieval, and secure access controls to reason over and act on organizational information safely.',
     label: 'Execution Gap'
   }
 ];
@@ -91,15 +91,14 @@ export default function Problem() {
                 <div className="h-stack gap-4">
                   <div className="problem-deco-line w-12 h-px bg-sky-400 origin-left scale-x-0" />
                   <p className="font-mono text-[10px] uppercase tracking-[0.5em] text-sky-400 font-semibold">
-                    Diagnostic // Knowledge
+                    Diagnostic // Enterprise AI
                   </p>
                 </div>
                 <h2 className="text-5xl sm:text-7xl lg:text-8xl tracking-tighter">
                   The <span className="italic font-serif">Context</span> Gap
                 </h2>
                 <p className="mt-4 md:mt-8 text-lg md:text-xl text-slate-400 font-sans leading-relaxed max-w-sm">
-                  Enterprise knowledge is scattered across tools and teams.
-                  RetrievalLabs.ai connects that context so people and agents can use it to get work done.
+                  Enterprise AI cannot operate effectively on models alone. It needs deep context about the organization—its software, data, workflows, decisions, and institutional knowledge.
                 </p>
               </div>
             </div>

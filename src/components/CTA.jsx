@@ -7,11 +7,11 @@ export default function CTA() {
       
       <div className="section-container relative z-10 flex flex-col items-center text-center">
         <h2 className="text-7xl sm:text-9xl mb-12">
-          Ready to build your <span className="italic">knowledge system</span>?
+          Ready to become <span className="italic">AI-native</span>?
         </h2>
-        
+
         <p className="text-xl text-slate-400 font-sans leading-relaxed max-w-2xl mb-16">
-          Connect company data sources, build a living knowledge graph, and deploy RBAC-aware agents that retrieve information and finish work securely.
+          Let's talk about how context and agentic infrastructure can help your enterprise move beyond AI pilots to real, scalable workflows.
         </p>
 
         <div className="v-stack sm:h-stack gap-6">
@@ -25,7 +25,7 @@ export default function CTA() {
         
         <div className="mt-32 pt-8 border-t border-white/5 w-full flex justify-center">
           <p className="font-mono text-[9px] uppercase tracking-[0.4em] text-white/20">
-            Knowledge system version 1.0.4-stable // RetrievalLabs.ai Inc.
+            Context infrastructure v2.0 // RetrievalLabs.ai Inc.
           </p>
         </div>
       </div>
