@@ -31,12 +31,12 @@ export default function Hero() {
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[150%] aspect-square bg-[radial-gradient(circle,rgba(56,189,248,0.08)_0%,transparent_70%)] pointer-events-none" aria-hidden="true" />
       
       <div className="section-container relative z-10 flex flex-col items-center">
-        <h1 className="hero-headline text-5xl sm:text-7xl lg:text-9xl text-center max-w-5xl opacity-0">
-          Company knowledge, <span className="italic font-serif">connected</span> and put to work
+        <h1 className="hero-headline text-4xl sm:text-6xl lg:text-8xl font-heading text-center max-w-5xl opacity-0">
+          Making <span className="italic font-serif">Enterprise</span> Software Development End-to-End <span className="italic font-serif">AI-Native</span>
         </h1>
         
         <p className="hero-sub mt-12 text-lg sm:text-xl text-slate-400 text-center max-w-2xl font-sans leading-relaxed opacity-0">
-          RetrievalLabs.ai turns company data sources into secure knowledge graphs and agent workflows, with RBAC-aware access for every person and agent.
+          RetrievalLabs.ai is building the infrastructure for AI-native enterprise software engineering—from understanding existing systems to building, modernizing, and operating them
         </p>
         
         <div className="hero-actions flex flex-col sm:flex-row items-center gap-4 sm:gap-6 mt-10 sm:mt-16 opacity-0">

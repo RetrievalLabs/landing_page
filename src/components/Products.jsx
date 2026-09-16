@@ -1,13 +1,4 @@
-import synapseLogo from '../../assets/synapse-logo.svg';
-
-const products = [
-  {
-    name: 'Synapse',
-    tag: 'MVP Stage',
-    desc: 'An AI organizational memory and coding agent. Synapse connects Jira, repos, PRs, and more into a knowledge graph, then turns approved tickets into sandbox-tested pull requests.',
-    href: '/?product=synapse',
-  },
-];
+const products = [];
 
 export default function Products() {
   return (
@@ -20,9 +11,6 @@ export default function Products() {
           <h2 className="text-6xl sm:text-8xl mb-8">
             Products
           </h2>
-          <p className="text-xl text-slate-400 font-sans leading-relaxed max-w-2xl">
-            Tools built on RetrievalLabs.ai's secure enterprise knowledge layer.
-          </p>
         </div>
 
         <div className="grid md:grid-cols-2 gap-8">
