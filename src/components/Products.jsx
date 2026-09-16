@@ -1,4 +1,13 @@
-const products = [];
+import gluonLogo from '../../assets/gluon-logo.png';
+
+const products = [
+  {
+    name: 'Gluon',
+    tag: 'Pilot',
+    desc: 'Agentic legacy code migration. Understand the code, understand the business, capture behavior, migrate, verify.',
+    href: '/?product=gluon',
+  },
+];
 
 export default function Products() {
   return (
@@ -18,17 +27,15 @@ export default function Products() {
             <article key={product.name} className="card-monolith min-h-[340px] v-stack justify-between group">
               <div className="v-stack gap-8">
                 <div className="flex flex-col sm:flex-row sm:items-center gap-6">
-                  <span className="w-44 h-20 rounded-lg bg-white flex items-center justify-center overflow-hidden p-3">
-                    <img src={synapseLogo} alt="Synapse logo" className="w-full h-full object-contain" loading="lazy" />
+                  <span className="w-44 h-20 rounded-lg bg-transparent flex items-center justify-center overflow-hidden gap-1">
+                    <img src={gluonLogo} alt="Gluon logo" className="h-full object-contain" loading="lazy" />
+                    <span className="text-5xl font-heading text-white">luon</span>
                   </span>
                   <span className="font-mono text-[10px] bg-white/5 border border-white/10 px-3 py-1.5 rounded-full w-fit text-slate-400 group-hover:bg-sky-400 group-hover:text-navy-950 group-hover:border-sky-400 transition-all">
                     {product.tag}
                   </span>
                 </div>
                 <div>
-                  <h3 className="text-6xl text-white font-heading mb-6">
-                    {product.name}
-                  </h3>
                   <p className="text-lg text-slate-400 font-sans leading-relaxed group-hover:text-slate-200 transition-colors">
                     {product.desc}
                   </p>
