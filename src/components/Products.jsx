@@ -4,7 +4,7 @@ const products = [
   {
     name: 'Gluon',
     tag: 'Pilot',
-    desc: 'Agentic legacy code migration. Understand the code, understand the business, capture behavior, migrate, verify.',
+    desc: 'Agentic legacy software modernization, from understanding the code and preserving behavior to migration, verification, and keeping dependencies and frameworks current over time.',
     href: '/?product=gluon',
   },
 ];

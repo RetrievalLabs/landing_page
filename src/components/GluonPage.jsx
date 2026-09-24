@@ -41,7 +41,7 @@ export default function GluonPage() {
               Gluon
             </h1>
             <p className="text-2xl text-slate-300 font-sans leading-relaxed max-w-3xl">
-              End-to-end agentic platform for modernizing legacy software. Gluon understands your system, captures its behavior, migrates the code, and verifies that everything still works.
+              End-to-end agentic platform for modernizing legacy software and keeping it modern over time. Gluon understands your system, captures its behavior, migrates the code, and verifies that everything still works—then helps keep dependencies, frameworks, and language versions current.
             </p>
           </div>
 
