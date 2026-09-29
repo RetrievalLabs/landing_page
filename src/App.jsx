@@ -23,7 +23,7 @@ function useQueryParam(key) {
 export default function App() {
   const product = useQueryParam('product');
 
-  if (product === 'gluon') {
+  if (product === 'gluon' || product === 'synapse') {
     return (
       <>
         <div className="noise-overlay" aria-hidden="true" />
