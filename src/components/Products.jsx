@@ -1,11 +1,11 @@
-import gluonLogo from '../../assets/gluon-logo.png';
+import cluonLogo from '../../assets/gluon-logo.png';
 
 const products = [
   {
-    name: 'Gluon',
+    name: 'Cluon',
     tag: 'Pilot',
     desc: 'Agentic legacy software modernization, from understanding the code and preserving behavior to migration, verification, and keeping dependencies and frameworks current over time.',
-    href: '/?product=gluon',
+    href: '/?product=cluon',
   },
 ];
 
@@ -28,7 +28,7 @@ export default function Products() {
               <div className="v-stack gap-8">
                 <div className="flex flex-col sm:flex-row sm:items-center gap-6">
                   <span className="w-44 h-20 rounded-lg bg-transparent flex items-center justify-center overflow-hidden gap-1">
-                    <img src={gluonLogo} alt="Gluon logo" className="h-full object-contain" loading="lazy" />
+                    <img src={cluonLogo} alt="Cluon logo" className="h-full object-contain" loading="lazy" />
                     <span className="text-5xl font-heading text-white">luon</span>
                   </span>
                   <span className="font-mono text-[10px] bg-white/5 border border-white/10 px-3 py-1.5 rounded-full w-fit text-slate-400 group-hover:bg-sky-400 group-hover:text-navy-950 group-hover:border-sky-400 transition-all">

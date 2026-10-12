@@ -1,10 +1,10 @@
-import gluonLogo from '../../assets/gluon-logo.png';
+import cluonLogo from '../../assets/gluon-logo.png';
 
 const steps = [
   {
     number: '01',
     title: 'Understand',
-    desc: 'Gluon analyzes the legacy codebase — build structure, dependencies, modules, and entry points — to build a complete picture of how the system works.',
+    desc: 'Cluon analyzes the legacy codebase — build structure, dependencies, modules, and entry points — to build a complete picture of how the system works.',
   },
   {
     number: '02',
@@ -14,16 +14,16 @@ const steps = [
   {
     number: '03',
     title: 'Migrate',
-    desc: 'Gluon transforms the codebase in controlled units — updating dependencies, APIs, frameworks, and language version — while preserving the original behavior.',
+    desc: 'Cluon transforms the codebase in controlled units — updating dependencies, APIs, frameworks, and language version — while preserving the original behavior.',
   },
   {
     number: '04',
     title: 'Verify',
-    desc: 'Every migrated unit is tested against the characterization scenarios. If something breaks, Gluon diagnoses the issue, repairs it, and retries automatically.',
+    desc: 'Every migrated unit is tested against the characterization scenarios. If something breaks, Cluon diagnoses the issue, repairs it, and retries automatically.',
   },
 ];
 
-export default function GluonPage() {
+export default function CluonPage() {
   return (
     <main id="main-content" className="min-h-screen pt-32 pb-24">
       <section className="section-container">
@@ -38,16 +38,16 @@ export default function GluonPage() {
               // Product
             </p>
             <h1 className="text-7xl sm:text-9xl mb-8">
-              Gluon
+              Cluon
             </h1>
             <p className="text-2xl text-slate-300 font-sans leading-relaxed max-w-3xl">
-              End-to-end agentic platform for modernizing legacy software and keeping it modern over time. Gluon understands your system, captures its behavior, migrates the code, and verifies that everything still works—then helps keep dependencies, frameworks, and language versions current.
+              End-to-end agentic platform for modernizing legacy software and keeping it modern over time. Cluon understands your system, captures its behavior, migrates the code, and verifies that everything still works—then helps keep dependencies, frameworks, and language versions current.
             </p>
           </div>
 
           <div className="card-monolith">
             <div className="rounded-xl bg-white p-6">
-              <img src={gluonLogo} alt="Gluon logo" className="w-full h-auto" />
+              <img src={cluonLogo} alt="Cluon logo" className="w-full h-auto" />
             </div>
             <div className="mt-8">
               <span className="font-mono text-[10px] bg-white/5 border border-white/10 px-3 py-1.5 rounded-full w-fit text-slate-400">
@@ -63,7 +63,7 @@ export default function GluonPage() {
             <p className="font-mono text-xs uppercase tracking-[0.4em] text-sky-400 mb-4 font-semibold">// Deployment</p>
             <h2 className="text-4xl sm:text-5xl">Cloud or self-hosted</h2>
             <p className="text-lg text-slate-400 mt-4 max-w-xl mx-auto">
-              Run Gluon in the cloud for zero-ops simplicity, or self-host for full control over your environment and data.
+              Run Cluon in the cloud for zero-ops simplicity, or self-host for full control over your environment and data.
             </p>
           </div>
 
@@ -117,7 +117,7 @@ export default function GluonPage() {
             <p className="font-mono text-xs uppercase tracking-[0.4em] text-sky-400 mb-4 font-semibold">// Pilot</p>
             <h2 className="text-4xl sm:text-5xl">Book a pilot</h2>
             <p className="text-lg text-slate-400 mt-4 max-w-xl mx-auto">
-              Tell us about your legacy system and we'll set up a focused Gluon pilot for your first migration.
+              Tell us about your legacy system and we'll set up a focused Cluon pilot for your first migration.
             </p>
           </div>
 

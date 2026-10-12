@@ -8,7 +8,7 @@ import Products from './components/Products';
 import SupportedBy from './components/SupportedBy';
 import MeetFounders from './components/MeetFounders';
 import Footer from './components/Footer';
-import GluonPage from './components/GluonPage';
+import CluonPage from './components/CluonPage';
 
 function useQueryParam(key) {
   const [value] = useState(() => {
@@ -23,12 +23,12 @@ function useQueryParam(key) {
 export default function App() {
   const product = useQueryParam('product');
 
-  if (product === 'gluon' || product === 'synapse') {
+  if (product === 'cluon' || product === 'gluon' || product === 'synapse') {
     return (
       <>
         <div className="noise-overlay" aria-hidden="true" />
         <Navbar />
-        <GluonPage />
+        <CluonPage />
         <Footer />
       </>
     );
